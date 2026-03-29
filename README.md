@@ -4,7 +4,7 @@ Dopasuj zwierzęta na farmie
 
 ## Instalacja i uruchomienie
 
-Testowy projekt stworzony do ćwieczenia React, TypeScript i Tailwind CSS.
+Testowy projekt stworzony do ćwiczenia React, TypeScript i Tailwind CSS.
 
 ### Wymagania
 
