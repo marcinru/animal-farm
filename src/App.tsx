@@ -3,14 +3,14 @@ import './index.css'
 import { Board } from './Board'
 
 function App() {
-  const animals = [
-    { name: 'Kura', img: '/img/kura.png' },
-    { name: 'Kaczka', img: '/img/kaczka.png' },
-    { name: 'Krowa', img: '/img/krowa.png' },
-    { name: 'Koń', img: '/img/kon.png' },
-    { name: 'Pies', img: '/img/pies.png' },
-    { name: 'Kot', img: '/img/kot.png' },
-  ]
+  const animals: Record<string, string> = {
+    Kura: '/img/kura.png',
+    Kaczka: '/img/kaczka.png',
+    Krowa: '/img/krowa.png',
+    Koń: '/img/kon.png',
+    Pies: '/img/pies.png',
+    Kot: '/img/kot.png',
+  }
 
   return (
     <div className="flex min-h-screen flex-col items-center bg-green-100 p-8">
