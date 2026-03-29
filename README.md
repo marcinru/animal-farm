@@ -44,7 +44,7 @@ Testowy projekt stworzony do ćwiczenia React, TypeScript i Tailwind CSS.
   npm run preview
   ```
 
-### Formatownanie kodu
+### Formatowanie kodu
 Projekt korzysta z **Prettier** do automatycznego formatowania kodu. Możesz sformatować wszystkie pliki ręcznie:
 ```bash
 npm run format
