@@ -1,15 +1,14 @@
 import React from 'react'
 
-interface CardProps {
+interface PictureCardProps {
   name: string
   img: string
 }
 
-export function Card({ name, img }: CardProps) {
+export function PictureCard({ name, img }: PictureCardProps) {
   return (
     <div className="flex cursor-pointer flex-col items-center rounded-xl bg-white p-4 shadow-lg transition-transform hover:scale-105">
-      <img src={img} alt={name} className="mb-4 h-32 w-32 object-contain" />
-      <span className="text-lg font-semibold text-gray-700">{name}</span>
+      <img src={img} alt={name} className="h-32 w-32 object-contain" />
     </div>
   )
 }
