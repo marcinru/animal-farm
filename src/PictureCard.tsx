@@ -1,4 +1,5 @@
 import React from 'react'
+import { Card } from './Card'
 
 interface PictureCardProps {
   name: string
@@ -9,11 +10,8 @@ interface PictureCardProps {
 
 export function PictureCard({ name, img, isSelected, onClick }: PictureCardProps) {
   return (
-    <div
-      className={`flex cursor-pointer flex-col items-center rounded-xl p-4 shadow-lg transition-transform hover:scale-105 ${isSelected ? 'bg-opacity-70 bg-blue-100 ring-4 ring-blue-500' : 'bg-white'}`}
-      onClick={onClick}
-    >
+    <Card isSelected={isSelected} onClick={onClick}>
       <img src={img} alt={name} className="h-32 w-32 object-contain" />
-    </div>
+    </Card>
   )
 }
