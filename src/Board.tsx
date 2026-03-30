@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { PictureCard } from './PictureCard'
 import { TextCard } from './TextCard'
 
@@ -17,20 +17,32 @@ function randomize<T>(array: T[]): T[] {
 
 export function Board(props: BoardProps) {
   const { animals } = props
-  const animalList = Object.entries(animals)
-  const pictures = useMemo(() => randomize(animalList), [animalList])
-  const names = useMemo(() => randomize(animalList), [animalList])
+  const pictures = useMemo(() => randomize(Object.entries(animals)), [])
+  const names = useMemo(() => randomize(Object.entries(animals)), [])
+  const [selectedPicture, setSelectedPicture] = useState<string | null>(null)
+  const [selectedText, setSelectedText] = useState<string | null>(null)
 
   return (
     <div className="grid grid-cols-2 gap-12">
       <div className="flex flex-col gap-6">
         {pictures.map(([name, img]) => (
-          <PictureCard key={`${name}-pic`} name={name} img={img} />
+          <PictureCard
+            key={`${name}-pic`}
+            name={name}
+            img={img}
+            isSelected={selectedPicture === name}
+            onClick={() => setSelectedPicture(name)}
+          />
         ))}
       </div>
       <div className="flex flex-col gap-6">
         {names.map(([name]) => (
-          <TextCard key={`${name}-text`} name={name} />
+          <TextCard
+            key={`${name}-text`}
+            name={name}
+            isSelected={selectedText === name}
+            onClick={() => setSelectedText(name)}
+          />
         ))}
       </div>
     </div>
