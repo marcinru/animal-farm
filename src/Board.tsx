@@ -21,6 +21,27 @@ export function Board(props: BoardProps) {
   const names = useMemo(() => randomize(Object.entries(animals)), [])
   const [selectedPicture, setSelectedPicture] = useState<string | null>(null)
   const [selectedText, setSelectedText] = useState<string | null>(null)
+  const [matchedAnimals, setMatchedAnimals] = useState<Set<string>>(new Set())
+
+  const handlePictureClick = (name: string) => {
+    if (selectedText === name) {
+      setMatchedAnimals((prev) => new Set(prev).add(name))
+      setSelectedPicture(null)
+      setSelectedText(null)
+    } else {
+      setSelectedPicture(name)
+    }
+  }
+
+  const handleTextClick = (name: string) => {
+    if (selectedPicture === name) {
+      setMatchedAnimals((prev) => new Set(prev).add(name))
+      setSelectedPicture(null)
+      setSelectedText(null)
+    } else {
+      setSelectedText(name)
+    }
+  }
 
   return (
     <div className="grid grid-cols-2 gap-12">
@@ -31,7 +52,8 @@ export function Board(props: BoardProps) {
             name={name}
             img={img}
             isSelected={selectedPicture === name}
-            onClick={() => setSelectedPicture(name)}
+            isMatched={matchedAnimals.has(name)}
+            onClick={() => handlePictureClick(name)}
           />
         ))}
       </div>
@@ -41,7 +63,8 @@ export function Board(props: BoardProps) {
             key={`${name}-text`}
             name={name}
             isSelected={selectedText === name}
-            onClick={() => setSelectedText(name)}
+            isMatched={matchedAnimals.has(name)}
+            onClick={() => handleTextClick(name)}
           />
         ))}
       </div>
