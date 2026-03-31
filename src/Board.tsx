@@ -45,7 +45,7 @@ export function Board(props: BoardProps) {
 
   return (
     <div className="grid grid-cols-2 gap-12">
-      <div className="flex flex-col gap-6">
+      <div className="grid grid-cols-2 gap-6">
         {pictures.map(([name, img]) => (
           <PictureCard
             key={`${name}-pic`}
@@ -57,7 +57,7 @@ export function Board(props: BoardProps) {
           />
         ))}
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="grid grid-cols-2 gap-6">
         {names.map(([name]) => (
           <TextCard
             key={`${name}-text`}
