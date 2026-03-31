@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import { PictureCard } from './PictureCard'
 import { TextCard } from './TextCard'
 
@@ -17,11 +17,19 @@ function randomize<T>(array: T[]): T[] {
 
 export function Board(props: BoardProps) {
   const { animals } = props
-  const pictures = useMemo(() => randomize(Object.entries(animals)), [])
-  const names = useMemo(() => randomize(Object.entries(animals)), [])
+  const [pictures, setPictures] = useState(() => randomize(Object.entries(animals)))
+  const [names, setNames] = useState(() => randomize(Object.entries(animals)))
   const [selectedPicture, setSelectedPicture] = useState<string | null>(null)
   const [selectedText, setSelectedText] = useState<string | null>(null)
   const [matchedAnimals, setMatchedAnimals] = useState<Set<string>>(new Set())
+
+  const handleReset = () => {
+    setPictures(randomize(Object.entries(animals)))
+    setNames(randomize(Object.entries(animals)))
+    setSelectedPicture(null)
+    setSelectedText(null)
+    setMatchedAnimals(new Set())
+  }
 
   const handlePictureClick = (name: string) => {
     if (selectedText === name) {
@@ -44,30 +52,38 @@ export function Board(props: BoardProps) {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-12">
-      <div className="grid grid-cols-2 gap-6">
-        {pictures.map(([name, img]) => (
-          <PictureCard
-            key={`${name}-pic`}
-            name={name}
-            img={img}
-            isSelected={selectedPicture === name}
-            isMatched={matchedAnimals.has(name)}
-            onClick={() => handlePictureClick(name)}
-          />
-        ))}
+    <div className="flex flex-col items-center gap-12">
+      <div className="grid grid-cols-2 gap-12">
+        <div className="grid grid-cols-2 gap-6">
+          {pictures.map(([name, img]) => (
+            <PictureCard
+              key={`${name}-pic`}
+              name={name}
+              img={img}
+              isSelected={selectedPicture === name}
+              isMatched={matchedAnimals.has(name)}
+              onClick={() => handlePictureClick(name)}
+            />
+          ))}
+        </div>
+        <div className="grid grid-cols-2 gap-6">
+          {names.map(([name]) => (
+            <TextCard
+              key={`${name}-text`}
+              name={name}
+              isSelected={selectedText === name}
+              isMatched={matchedAnimals.has(name)}
+              onClick={() => handleTextClick(name)}
+            />
+          ))}
+        </div>
       </div>
-      <div className="grid grid-cols-2 gap-6">
-        {names.map(([name]) => (
-          <TextCard
-            key={`${name}-text`}
-            name={name}
-            isSelected={selectedText === name}
-            isMatched={matchedAnimals.has(name)}
-            onClick={() => handleTextClick(name)}
-          />
-        ))}
-      </div>
+      <button
+        onClick={handleReset}
+        className="cursor-pointer rounded-xl bg-white px-8 py-4 font-bold tracking-[1px] text-red-600 shadow-lg transition-all hover:scale-105 hover:bg-gray-50"
+      >
+        RESET
+      </button>
     </div>
   )
 }
