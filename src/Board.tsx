@@ -79,8 +79,12 @@ export function Board(props: BoardProps) {
           ))}
         </div>
       </div>
-      //TODO: Add score
-      <Button onClick={handleReset}>RESET</Button>
+      <div className="flex gap-8">
+        <div className="rounded-xl bg-white px-8 py-4 font-bold tracking-[1px] text-gray-700 shadow-lg">
+          Dopasowane {matchedAnimals.size} / {pictures.length}
+        </div>
+        <Button onClick={handleReset}>RESET</Button>
+      </div>
     </div>
   )
 }
