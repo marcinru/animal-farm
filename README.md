@@ -45,8 +45,11 @@ Testowy projekt stworzony do ćwiczenia React, TypeScript i Tailwind CSS.
   ```
 
 ### Formatowanie kodu
+
 Projekt korzysta z **Prettier** do automatycznego formatowania kodu. Możesz sformatować wszystkie pliki ręcznie:
+
 ```bash
 npm run format
 ```
+
 Aby kod formatował się automatycznie przy każdym zapisie w WebStorm, upewnij się, że opcja **"Reformat on save"** jest włączona w ustawieniach (`Settings` > `Languages & Frameworks` > `Prettier`).

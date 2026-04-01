@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { PictureCard } from './PictureCard'
 import { TextCard } from './TextCard'
+import { Button } from './Button'
 
 interface BoardProps {
   animals: Record<string, string>
@@ -78,12 +79,8 @@ export function Board(props: BoardProps) {
           ))}
         </div>
       </div>
-      <button
-        onClick={handleReset}
-        className="cursor-pointer rounded-xl bg-white px-8 py-4 font-bold tracking-[1px] text-red-600 shadow-lg transition-all hover:scale-105 hover:bg-gray-50"
-      >
-        RESET
-      </button>
+      //TODO: Add score
+      <Button onClick={handleReset}>RESET</Button>
     </div>
   )
 }
