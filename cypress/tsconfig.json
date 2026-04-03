@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
@@ -18,6 +17,5 @@
     "jsx": "react-jsx",
     "types": ["cypress"]
   },
-  "include": ["src", "cypress.config.ts", "cypress/**/*.ts", "cypress/**/*.tsx"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["component/**/*.cy.tsx", "support/**/*.ts", "../src/vite-env.d.ts"]
 }

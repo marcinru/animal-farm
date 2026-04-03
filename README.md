@@ -53,3 +53,19 @@ npm run format
 ```
 
 Aby kod formatował się automatycznie przy każdym zapisie w WebStorm, upewnij się, że opcja **"Reformat on save"** jest włączona w ustawieniach (`Settings` > `Languages & Frameworks` > `Prettier`).
+
+### Testy
+
+Projekt wykorzystuje **Cypress** do testów komponentów (Component Testing).
+
+- **Otwarcie okna interaktywnego Cypress:**
+
+  ```bash
+  npm run cypress:open
+  ```
+
+- **Uruchomienie wszystkich testów w konsoli (headless):**
+
+  ```bash
+  npm run cypress:run
+  ```
