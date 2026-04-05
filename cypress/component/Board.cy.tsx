@@ -1,19 +1,27 @@
 import { Board } from '../../src/Board'
 
-describe('Board Component', () => {
+function render() {
   const animals = {
-    Kura: '/img/kura.png',
-    Kaczka: '/img/kaczka.png',
+    Kura: 'img/kura.png',
+    Kaczka: 'img/kaczka.png',
   }
 
+  cy.mount(
+    <div className="min-h-screen bg-green-100 py-8">
+      <Board animals={animals} />
+    </div>,
+  )
+}
+
+describe('Board Component', { viewportWidth: 800 }, () => {
   it('renders correctly', () => {
-    cy.mount(<Board animals={animals} />)
+    render()
     cy.get('h1').should('not.exist') // Board doesn't have h1, App does.
     cy.contains('Dopasowane 0 / 2').should('be.visible')
   })
 
   it('allows matching animals', () => {
-    cy.mount(<Board animals={animals} />)
+    render()
 
     // Find the picture card for Kura
     cy.get('[alt="Kura"]').click()
@@ -26,7 +34,7 @@ describe('Board Component', () => {
   })
 
   it('resets the board', () => {
-    cy.mount(<Board animals={animals} />)
+    render()
 
     cy.get('[alt="Kura"]').click()
     cy.contains('Kura').click()
